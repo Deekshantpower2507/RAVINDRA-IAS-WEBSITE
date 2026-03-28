@@ -1,0 +1,1877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ravindra IAS – Civil Services Excellence</title>
+  <meta name="description" content="India's premier UPSC coaching institute. Structured mentorship, expert faculty, and proven results for Prelims, Mains & Interview." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── CSS Variables ─────────────────────────────────── */
+    :root {
+      --ink: #0d0c0a;
+      --parchment: #f5f0e8;
+      --cream: #faf7f2;
+      --gold: #b8912a;
+      --gold-light: #d4a843;
+      --gold-pale: #f0e4c4;
+      --crimson: #8b1a1a;
+      --deep-navy: #0f1e3c;
+      --slate: #4a5568;
+      --muted: #8a8070;
+      --border: rgba(184,145,42,0.25);
+      --section-gap: clamp(5rem, 10vw, 9rem);
+      --radius: 4px;
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --shadow-gold: 0 4px 32px rgba(184,145,42,0.18);
+      --shadow-sm: 0 2px 12px rgba(13,12,10,0.08);
+      --shadow-md: 0 8px 40px rgba(13,12,10,0.12);
+    }
+
+    /* ─── Reset ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+
+    /* ─── Utility ────────────────────────────────────────── */
+    .container { width: 90%; max-width: 1240px; margin: 0 auto; }
+    .gold-text { color: var(--gold); }
+    .tag {
+      display: inline-block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid var(--border);
+      padding: 0.35em 1.1em;
+      border-radius: 100px;
+      background: rgba(184,145,42,0.06);
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--ink);
+    }
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--slate);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    /* ─── Reveal Animations ──────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.72s var(--ease-out), transform 0.72s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.08s; }
+    .reveal-delay-2 { transition-delay: 0.16s; }
+    .reveal-delay-3 { transition-delay: 0.24s; }
+    .reveal-delay-4 { transition-delay: 0.32s; }
+
+    /* ─── Noise Overlay ──────────────────────────────────── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      padding: 0;
+      transition: background 0.4s, box-shadow 0.4s, padding 0.4s;
+    }
+    nav.scrolled {
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 1px 0 var(--border), var(--shadow-sm);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+    .logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .logo-main {
+      font-family: 'Cinzel', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--deep-navy);
+      letter-spacing: 0.04em;
+    }
+    .logo-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
+    .nav-links a {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--gold);
+      transition: width 0.3s var(--ease-out);
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      background: var(--deep-navy);
+      color: #fff !important;
+      padding: 0.7em 1.6em;
+      border-radius: 3px;
+      transition: background 0.25s, transform 0.2s !important;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--gold) !important; transform: translateY(-1px); }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 5%;
+      flex-direction: column;
+      gap: 1.2rem;
+      z-index: 999;
+      box-shadow: var(--shadow-md);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 1rem; font-weight: 500; color: var(--ink); padding: 0.4rem 0; border-bottom: 1px solid var(--border); }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 8rem 0 5rem;
+      background: var(--deep-navy);
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(184,145,42,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 10% 80%, rgba(139,26,26,0.18) 0%, transparent 55%),
+        linear-gradient(135deg, #0a1628 0%, #0f1e3c 50%, #111820 100%);
+    }
+    .hero-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(184,145,42,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,145,42,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1rem;
+      max-width: 900px;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 2rem;
+    }
+    .hero-eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.7;
+    }
+    .hero-eyebrow span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 600;
+      line-height: 1.05;
+      color: #fff;
+      margin-bottom: 1.8rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-desc {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 580px;
+      margin: 0 auto 3rem;
+      line-height: 1.75;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      background: var(--gold);
+      color: var(--deep-navy);
+      padding: 1em 2.4em;
+      border-radius: 3px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 2px solid var(--gold);
+      transition: background 0.25s, color 0.25s, transform 0.2s, box-shadow 0.25s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(184,145,42,0.4);
+    }
+    .btn-outline {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      background: transparent;
+      color: rgba(255,255,255,0.8);
+      padding: 1em 2.4em;
+      border-radius: 3px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: border-color 0.25s, color 0.25s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+      transform: translateY(-2px);
+    }
+    .hero-stats {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: clamp(2rem, 6vw, 5rem);
+      z-index: 2;
+      white-space: nowrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-weight: 700;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+    .stat-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.12);
+      align-self: stretch;
+    }
+
+    /* ─── ABOUT ──────────────────────────────────────────── */
+    #about {
+      padding: var(--section-gap) 0;
+      background: var(--cream);
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-img-frame {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .about-img-inner {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: linear-gradient(135deg, var(--deep-navy) 0%, #1a3060 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-img-inner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 50% 40%, rgba(184,145,42,0.15), transparent),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='rgba(184,145,42,0.1)' stroke-width='1'%3E%3Cpath d='M0 30h60M30 0v60'/%3E%3C/g%3E%3C/svg%3E");
+    }
+    .about-img-icon {
+      font-size: 5rem;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .about-badge {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      background: var(--gold);
+      color: var(--deep-navy);
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cinzel', serif;
+      box-shadow: var(--shadow-gold);
+    }
+    .about-badge-num {
+      font-size: 2rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+    .about-badge-text {
+      font-size: 0.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-align: center;
+      line-height: 1.3;
+    }
+    .about-content { padding-right: 1rem; }
+    .about-content .tag { margin-bottom: 1.4rem; }
+    .about-content .section-title { margin-bottom: 1.2rem; }
+    .about-content .section-sub { margin-bottom: 2rem; }
+    .pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .pillar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.3s, border-color 0.3s;
+    }
+    .pillar::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 0;
+      background: var(--gold);
+      transition: height 0.4s var(--ease-out);
+    }
+    .pillar:hover { box-shadow: var(--shadow-gold); transform: translateY(-2px); border-color: var(--gold); }
+    .pillar:hover::before { height: 100%; }
+    .pillar-icon { font-size: 1.4rem; margin-bottom: 0.5rem; }
+    .pillar-name { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.1em; color: var(--deep-navy); font-weight: 600; }
+
+    /* ─── COURSES ────────────────────────────────────────── */
+    #courses {
+      padding: var(--section-gap) 0;
+      background: #fff;
+      position: relative;
+    }
+    #courses::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .section-header .tag { margin-bottom: 1rem; }
+    .section-header .section-title { margin-bottom: 1rem; }
+    .section-header .section-sub { margin: 0 auto; text-align: center; }
+    .courses-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .course-card {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.35s var(--ease-out), box-shadow 0.35s;
+      cursor: pointer;
+    }
+    .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md), 0 0 0 1px var(--gold);
+    }
+    .course-card-top {
+      padding: 2rem 2rem 1.5rem;
+      position: relative;
+    }
+    .course-card-top::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 2rem; right: 2rem;
+      height: 1px;
+      background: var(--border);
+    }
+    .course-icon {
+      width: 52px; height: 52px;
+      border-radius: 10px;
+      background: var(--deep-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 1.2rem;
+      transition: background 0.3s;
+    }
+    .course-card:hover .course-icon { background: var(--gold); }
+    .course-badge {
+      position: absolute;
+      top: 1.2rem; right: 1.2rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.58rem;
+      letter-spacing: 0.12em;
+      padding: 0.3em 0.8em;
+      border-radius: 100px;
+      background: rgba(184,145,42,0.12);
+      color: var(--gold);
+      border: 1px solid var(--border);
+    }
+    .course-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.45rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 0.4rem;
+    }
+    .course-desc {
+      font-size: 0.87rem;
+      color: var(--slate);
+      line-height: 1.65;
+    }
+    .course-card-bottom {
+      padding: 1.4rem 2rem;
+    }
+    .course-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1.4rem;
+    }
+    .course-feature {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.84rem;
+      color: var(--slate);
+    }
+    .course-feature::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      font-size: 0.75rem;
+    }
+    .course-link {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      color: var(--deep-navy);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.2s, gap 0.2s;
+      font-weight: 600;
+    }
+    .course-card:hover .course-link { color: var(--gold); gap: 0.9rem; }
+
+    /* ─── STUDY RESOURCES ────────────────────────────────── */
+    #resources {
+      padding: var(--section-gap) 0;
+      background: var(--parchment);
+      position: relative;
+      overflow: hidden;
+    }
+    .resources-bg-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(8rem, 20vw, 18rem);
+      font-weight: 700;
+      color: rgba(184,145,42,0.04);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: -0.05em;
+      user-select: none;
+    }
+    .resources-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+    .resources-left .tag { margin-bottom: 1.2rem; }
+    .resources-left .section-title { margin-bottom: 1rem; }
+    .resources-left .section-sub { margin-bottom: 2.5rem; }
+    .resource-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s var(--ease-out);
+      position: relative;
+      overflow: hidden;
+    }
+    .resource-card::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 0;
+      background: var(--gold);
+      transition: width 0.4s var(--ease-out);
+    }
+    .resource-card:hover { border-color: var(--gold); box-shadow: var(--shadow-gold); transform: translateX(4px); }
+    .resource-card:hover::before { width: 4px; }
+    .resource-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      width: 46px;
+      text-align: center;
+    }
+    .resource-info {}
+    .resource-name {
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+    .resource-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .resource-arrow {
+      margin-left: auto;
+      color: var(--muted);
+      transition: color 0.2s, transform 0.2s;
+      flex-shrink: 0;
+    }
+    .resource-card:hover .resource-arrow { color: var(--gold); transform: translateX(4px); }
+
+    /* ─── TOPPERS ────────────────────────────────────────── */
+    #results {
+      padding: var(--section-gap) 0;
+      background: var(--deep-navy);
+      overflow: hidden;
+    }
+    #results .section-header .section-title { color: #fff; }
+    #results .section-header .section-sub { color: rgba(255,255,255,0.55); }
+    .toppers-marquee-wrapper {
+      overflow: hidden;
+      margin-top: 3.5rem;
+      position: relative;
+    }
+    .toppers-marquee-wrapper::before,
+    .toppers-marquee-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 100px;
+      z-index: 2;
+    }
+    .toppers-marquee-wrapper::before {
+      left: 0;
+      background: linear-gradient(90deg, var(--deep-navy), transparent);
+    }
+    .toppers-marquee-wrapper::after {
+      right: 0;
+      background: linear-gradient(-90deg, var(--deep-navy), transparent);
+    }
+    .toppers-track {
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee 28s linear infinite;
+      width: max-content;
+    }
+    .toppers-track:hover { animation-play-state: paused; }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .topper-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(184,145,42,0.2);
+      border-radius: 10px;
+      padding: 2rem 1.8rem;
+      width: 240px;
+      flex-shrink: 0;
+      text-align: center;
+      transition: background 0.3s, border-color 0.3s;
+      cursor: default;
+    }
+    .topper-card:hover {
+      background: rgba(184,145,42,0.08);
+      border-color: var(--gold);
+    }
+    .topper-avatar {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--crimson) 100%);
+      border: 2px solid rgba(184,145,42,0.4);
+    }
+    .topper-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.3rem;
+    }
+    .topper-rank {
+      font-family: 'Cinzel', serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .topper-year {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+    }
+
+    /* ─── WHY US ─────────────────────────────────────────── */
+    #why {
+      padding: var(--section-gap) 0;
+      background: var(--cream);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .why-features {
+      display: flex;
+      flex-direction: column;
+      gap: 1.8rem;
+    }
+    .why-feature {
+      display: flex;
+      gap: 1.4rem;
+      align-items: flex-start;
+      padding: 1.4rem;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      transition: border-color 0.3s, background 0.3s, transform 0.3s;
+      cursor: default;
+    }
+    .why-feature:hover {
+      border-color: var(--border);
+      background: #fff;
+      transform: translateX(6px);
+      box-shadow: var(--shadow-sm);
+    }
+    .why-feature-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: var(--parchment);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      transition: background 0.3s, border-color 0.3s;
+    }
+    .why-feature:hover .why-feature-icon {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+    .why-feature-content h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--ink);
+    }
+    .why-feature-content p {
+      font-size: 0.88rem;
+      color: var(--slate);
+      line-height: 1.7;
+    }
+    .why-visual {
+      position: relative;
+    }
+    .why-card-stack {
+      position: relative;
+      padding: 2rem;
+    }
+    .why-main-card {
+      background: var(--deep-navy);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative;
+      z-index: 1;
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+    }
+    .why-main-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,145,42,0.15), transparent);
+    }
+    .why-card-stat {
+      text-align: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 1.5rem;
+    }
+    .why-card-stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .why-card-stat-label {
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+    .why-card-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .why-card-item {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .why-card-item::before {
+      content: '▸';
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+    .why-float-card {
+      position: absolute;
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      border: 1px solid var(--border);
+      animation: float 4s ease-in-out infinite;
+    }
+    .why-float-card:nth-child(2) {
+      bottom: -1rem;
+      right: -0.5rem;
+      animation-delay: -2s;
+    }
+    .why-float-card:nth-child(3) {
+      top: 0;
+      left: -0.5rem;
+      animation-delay: -1s;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .float-icon { font-size: 1.4rem; }
+    .float-text { font-size: 0.78rem; color: var(--ink); font-weight: 500; }
+    .float-val { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); font-weight: 700; }
+
+    /* ─── FAQ ────────────────────────────────────────────── */
+    #faq {
+      padding: var(--section-gap) 0;
+      background: var(--parchment);
+    }
+    .faq-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .faq-left .tag { margin-bottom: 1.2rem; }
+    .faq-left .section-title { margin-bottom: 1rem; }
+    .faq-left .section-sub { margin-bottom: 2rem; }
+    .faq-contact-prompt {
+      background: var(--deep-navy);
+      border-radius: 10px;
+      padding: 2rem;
+      color: #fff;
+    }
+    .faq-contact-prompt p { font-size: 0.9rem; color: rgba(255,255,255,0.65); margin-bottom: 1rem; line-height: 1.65; }
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .faq-q {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 0;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 0.97rem;
+      color: var(--ink);
+      gap: 1rem;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-chevron {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--parchment);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.3s var(--ease-out), background 0.3s;
+      font-size: 0.7rem;
+      color: var(--gold);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); background: var(--gold); color: #fff; }
+    .faq-a {
+      font-size: 0.9rem;
+      color: var(--slate);
+      line-height: 1.75;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s var(--ease-out), padding 0.3s;
+      padding-bottom: 0;
+    }
+    .faq-item.open .faq-a {
+      max-height: 250px;
+      padding-bottom: 1.2rem;
+    }
+
+    /* ─── ENROLL ─────────────────────────────────────────── */
+    #enroll {
+      padding: var(--section-gap) 0;
+      background: var(--deep-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .enroll-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 85% 50%, rgba(184,145,42,0.1), transparent),
+        radial-gradient(ellipse 50% 60% at 10% 30%, rgba(139,26,26,0.15), transparent);
+    }
+    .enroll-grid-lines {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(184,145,42,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,145,42,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .enroll-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+    .enroll-left .section-title { color: #fff; margin-bottom: 1rem; }
+    .enroll-left .section-sub { color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; }
+    .enroll-left .tag { margin-bottom: 1.2rem; }
+    .enroll-checks {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .enroll-check {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .check-icon {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: rgba(184,145,42,0.2);
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+    .enroll-form-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(184,145,42,0.2);
+      border-radius: 16px;
+      padding: 2.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .form-sub {
+      font-size: 0.84rem;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 1.8rem;
+    }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .form-group.full { grid-column: 1 / -1; }
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .form-group input,
+    .form-group select {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+      width: 100%;
+    }
+    .form-group select option { background: var(--deep-navy); }
+    .form-group input:focus,
+    .form-group select:focus {
+      border-color: var(--gold);
+      background: rgba(184,145,42,0.06);
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,0.3); }
+    .form-submit {
+      width: 100%;
+      padding: 1em;
+      background: var(--gold);
+      color: var(--deep-navy);
+      border: none;
+      border-radius: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(184,145,42,0.4);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: #080c18;
+      border-top: 1px solid rgba(184,145,42,0.15);
+      padding: 4rem 0 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .logo-main { color: #fff; font-size: 1.4rem; }
+    .footer-brand p {
+      font-size: 0.87rem;
+      color: rgba(255,255,255,0.4);
+      margin-top: 0.8rem;
+      line-height: 1.7;
+      max-width: 240px;
+    }
+    .footer-col h4 {
+      font-family: 'Cinzel', serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+      font-weight: 600;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: 0.65rem; }
+    .footer-col ul a {
+      font-size: 0.86rem;
+      color: rgba(255,255,255,0.45);
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+    .footer-socials { display: flex; gap: 1rem; }
+    .social-link {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.4);
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .social-link:hover { border-color: var(--gold); color: var(--gold); background: rgba(184,145,42,0.08); }
+
+    /* ─── SCROLL TO TOP ──────────────────────────────────── */
+    .scroll-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--gold);
+      color: var(--deep-navy);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-gold);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 500;
+    }
+    .scroll-top.visible { opacity: 1; transform: translateY(0); }
+    .scroll-top:hover { background: var(--deep-navy); color: var(--gold); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .courses-grid { grid-template-columns: 1fr 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .about-grid { gap: 3rem; }
+      .why-grid { gap: 3rem; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-visual { display: none; }
+      .courses-grid { grid-template-columns: 1fr; }
+      .resources-layout { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-visual { display: none; }
+      .faq-layout { grid-template-columns: 1fr; }
+      .faq-contact-prompt { display: none; }
+      .enroll-content { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-stats { position: static; transform: none; margin-top: 3rem; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+      #hero { padding-bottom: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .pillars { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 2.4rem; }
+      .hero-actions { flex-direction: column; align-items: stretch; text-align: center; }
+      .pillars { grid-template-columns: 1fr; }
+      .hero-stats { gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────── -->
+<nav id="navbar" role="banner">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="logo" aria-label="Ravindra IAS Home">
+        <span class="logo-main">Ravindra IAS</span>
+        <span class="logo-sub">Civil Services Excellence</span>
+      </a>
+      <ul class="nav-links" role="navigation" aria-label="Main navigation">
+        <li><a href="#about">About</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#enroll" class="nav-cta">Enrol Now</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu" role="navigation" aria-label="Mobile navigation">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#courses" onclick="closeMobile()">Courses</a>
+  <a href="#resources" onclick="closeMobile()">Resources</a>
+  <a href="#results" onclick="closeMobile()">Results</a>
+  <a href="#why" onclick="closeMobile()">Why Us</a>
+  <a href="#faq" onclick="closeMobile()">FAQ</a>
+  <a href="#enroll" onclick="closeMobile()" style="color:var(--gold);font-family:'Cinzel',serif;font-weight:600;">Enrol Now →</a>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<main>
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg" aria-hidden="true"></div>
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow reveal">
+      <span class="hero-eyebrow-line"></span>
+      <span>India's Premier UPSC Coaching</span>
+      <span class="hero-eyebrow-line"></span>
+    </div>
+    <h1 class="hero-title reveal reveal-delay-1" id="hero-title">
+      Where Aspirants Become<br><em>IAS Officers</em>
+    </h1>
+    <p class="hero-desc reveal reveal-delay-2">
+      Structured guidance through Prelims, Mains & Interview with expert mentorship, curated study material, and a legacy of proven results.
+    </p>
+    <div class="hero-actions reveal reveal-delay-3">
+      <a href="#enroll" class="btn-primary">Start Your Journey</a>
+      <a href="#courses" class="btn-outline">Explore Courses</a>
+    </div>
+    <div class="hero-stats reveal reveal-delay-4">
+      <div class="stat">
+        <div class="stat-num" data-count="2400">0</div>
+        <div class="stat-label">Selections</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num" data-count="18">0</div>
+        <div class="stat-label">Years Legacy</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num" data-suffix="%" data-count="94">0</div>
+        <div class="stat-label">Prelims Clear Rate</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num" data-count="150">0</div>
+        <div class="stat-label">Faculty Experts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────── -->
+<section id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <div class="about-img-inner">
+            <div class="about-img-icon">🏛️</div>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-num">18+</div>
+            <div class="about-badge-text">Years of<br>Excellence</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="tag reveal">Our Story</div>
+        <h2 class="section-title reveal reveal-delay-1" id="about-title">
+          Built on a Foundation of<br>Academic Rigour
+        </h2>
+        <p class="section-sub reveal reveal-delay-2">
+          Ravindra IAS was established with a singular mission — to make civil services accessible, structured, and achievable. We combine the depth of classical pedagogy with modern mentorship to prepare officers who lead with integrity.
+        </p>
+        <div class="pillars reveal reveal-delay-3">
+          <div class="pillar"><div class="pillar-icon">📚</div><div class="pillar-name">Curated Curriculum</div></div>
+          <div class="pillar"><div class="pillar-icon">🎯</div><div class="pillar-name">Expert Mentors</div></div>
+          <div class="pillar"><div class="pillar-icon">📊</div><div class="pillar-name">Test Series</div></div>
+          <div class="pillar"><div class="pillar-icon">🗣️</div><div class="pillar-name">Interview Prep</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COURSES ───────────────────────────────────────────── -->
+<section id="courses" aria-labelledby="courses-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal">Programs</div>
+      <h2 class="section-title reveal reveal-delay-1" id="courses-title">Courses Designed<br>for Every Stage</h2>
+      <p class="section-sub reveal reveal-delay-2">From foundation to interview — our programs cover the complete UPSC journey with precision.</p>
+    </div>
+    <div class="courses-grid">
+      <article class="course-card reveal">
+        <div class="course-card-top">
+          <div class="course-icon">📖</div>
+          <span class="course-badge">Foundation</span>
+          <h3 class="course-name">GS Foundation</h3>
+          <p class="course-desc">Comprehensive coverage of all four GS papers with integrated Prelims strategy and conceptual depth.</p>
+        </div>
+        <div class="course-card-bottom">
+          <ul class="course-features">
+            <li class="course-feature">600+ hours of live instruction</li>
+            <li class="course-feature">Weekly tests & evaluations</li>
+            <li class="course-feature">Printed study material included</li>
+          </ul>
+          <a href="#enroll" class="course-link">Enrol in this program <span>→</span></a>
+        </div>
+      </article>
+      <article class="course-card reveal reveal-delay-1">
+        <div class="course-card-top">
+          <div class="course-icon">✍️</div>
+          <span class="course-badge">Advanced</span>
+          <h3 class="course-name">Mains Excellence</h3>
+          <p class="course-desc">Intensive answer-writing program with one-on-one copy evaluation, essay mastery, and GS Mains paper-wise strategy.</p>
+        </div>
+        <div class="course-card-bottom">
+          <ul class="course-features">
+            <li class="course-feature">Personalised copy evaluation</li>
+            <li class="course-feature">Essay & Ethics workshops</li>
+            <li class="course-feature">Model answer frameworks</li>
+          </ul>
+          <a href="#enroll" class="course-link">Enrol in this program <span>→</span></a>
+        </div>
+      </article>
+      <article class="course-card reveal reveal-delay-2">
+        <div class="course-card-top">
+          <div class="course-icon">🎙️</div>
+          <span class="course-badge">Interview</span>
+          <h3 class="course-name">Personality Test Prep</h3>
+          <p class="course-desc">Structured mock interview panels, DAF analysis, current affairs grilling and personalised feedback by former IAS officers.</p>
+        </div>
+        <div class="course-card-bottom">
+          <ul class="course-features">
+            <li class="course-feature">Real panel simulations</li>
+            <li class="course-feature">DAF deep-dive sessions</li>
+            <li class="course-feature">Feedback from IAS veterans</li>
+          </ul>
+          <a href="#enroll" class="course-link">Enrol in this program <span>→</span></a>
+        </div>
+      </article>
+      <article class="course-card reveal reveal-delay-1">
+        <div class="course-card-top">
+          <div class="course-icon">⚡</div>
+          <span class="course-badge">Crash Course</span>
+          <h3 class="course-name">Prelims Intensive</h3>
+          <p class="course-desc">3-month rapid-revision program targeting Prelims GS Paper I & CSAT with 50+ full-length mock tests.</p>
+        </div>
+        <div class="course-card-bottom">
+          <ul class="course-features">
+            <li class="course-feature">50+ full-length mocks</li>
+            <li class="course-feature">Subject-wise rapid revision</li>
+            <li class="course-feature">CSAT special batches</li>
+          </ul>
+          <a href="#enroll" class="course-link">Enrol in this program <span>→</span></a>
+        </div>
+      </article>
+      <article class="course-card reveal reveal-delay-2">
+        <div class="course-card-top">
+          <div class="course-icon">🌐</div>
+          <span class="course-badge">Online</span>
+          <h3 class="course-name">Live Online Batch</h3>
+          <p class="course-desc">Full-feature online program with live classes, doubt sessions, and digital study material — study from anywhere in India.</p>
+        </div>
+        <div class="course-card-bottom">
+          <ul class="course-features">
+            <li class="course-feature">Live HD streaming classes</li>
+            <li class="course-feature">Recorded lecture library</li>
+            <li class="course-feature">Online test platform access</li>
+          </ul>
+          <a href="#enroll" class="course-link">Enrol in this program <span>→</span></a>
+        </div>
+      </article>
+      <article class="course-card reveal reveal-delay-3">
+        <div class="course-card-top">
+          <div class="course-icon">📝</div>
+          <span class="course-badge">Optional</span>
+          <h3 class="course-name">Optional Subject</h3>
+          <p class="course-desc">Dedicated optional subject coaching for PSIR, Sociology, History, Geography, and Public Administration by subject specialists.</p>
+        </div>
+        <div class="course-card-bottom">
+          <ul class="course-features">
+            <li class="course-feature">6+ optional subjects offered</li>
+            <li class="course-feature">Specialist faculty per subject</li>
+            <li class="course-feature">Previous year paper analysis</li>
+          </ul>
+          <a href="#enroll" class="course-link">Enrol in this program <span>→</span></a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESOURCES ─────────────────────────────────────────── -->
+<section id="resources" aria-labelledby="resources-title">
+  <div class="resources-bg-text" aria-hidden="true">RESOURCES</div>
+  <div class="container">
+    <div class="resources-layout">
+      <div class="resources-left">
+        <div class="tag reveal">Study Material</div>
+        <h2 class="section-title reveal reveal-delay-1" id="resources-title">Everything You<br>Need to Clear UPSC</h2>
+        <p class="section-sub reveal reveal-delay-2">
+          Our resource ecosystem covers every dimension of preparation — from current affairs to conceptual notes, test series to video lectures.
+        </p>
+        <a href="#enroll" class="btn-primary reveal reveal-delay-3" style="display:inline-block;margin-top:0.5rem;">Access All Resources</a>
+      </div>
+      <div class="resource-cards">
+        <div class="resource-card reveal">
+          <div class="resource-icon">📰</div>
+          <div class="resource-info">
+            <div class="resource-name">Daily Current Affairs</div>
+            <div class="resource-meta">Updated every morning · 8-10 min read</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </div>
+        <div class="resource-card reveal reveal-delay-1">
+          <div class="resource-icon">📚</div>
+          <div class="resource-info">
+            <div class="resource-name">Subject-wise Notes</div>
+            <div class="resource-meta">2,000+ curated pages · PDF format</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </div>
+        <div class="resource-card reveal reveal-delay-2">
+          <div class="resource-icon">🎯</div>
+          <div class="resource-info">
+            <div class="resource-name">Online Test Series</div>
+            <div class="resource-meta">Prelims + Mains · 200+ tests available</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </div>
+        <div class="resource-card reveal reveal-delay-3">
+          <div class="resource-icon">🎬</div>
+          <div class="resource-info">
+            <div class="resource-name">Video Lecture Library</div>
+            <div class="resource-meta">1,400+ hours · All GS topics covered</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </div>
+        <div class="resource-card reveal reveal-delay-4">
+          <div class="resource-icon">📊</div>
+          <div class="resource-info">
+            <div class="resource-name">PYQ Analysis & Solutions</div>
+            <div class="resource-meta">Previous 15 years · Trend analysis included</div>
+          </div>
+          <div class="resource-arrow">→</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RESULTS ───────────────────────────────────────────── -->
+<section id="results" aria-labelledby="results-title">
+  <div class="container">
+    <div class="section-header">
+      <div class="tag reveal" style="border-color:rgba(184,145,42,0.4);background:rgba(184,145,42,0.08);">Our Toppers</div>
+      <h2 class="section-title reveal reveal-delay-1" id="results-title">Officers We're<br>Proud to Have Mentored</h2>
+      <p class="section-sub reveal reveal-delay-2">Hundreds of our students have gone on to serve India in the IAS, IPS, IFS, and other prestigious services.</p>
+    </div>
+  </div>
+  <div class="toppers-marquee-wrapper">
+    <div class="toppers-track" aria-label="Topper testimonials carousel">
+      <!-- First set -->
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Priya Sharma</div><div class="topper-rank">AIR 12 · IAS</div><div class="topper-year">UPSC CSE 2023</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Arjun Mehta</div><div class="topper-rank">AIR 34 · IPS</div><div class="topper-year">UPSC CSE 2023</div></div>
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Ananya Rao</div><div class="topper-rank">AIR 7 · IAS</div><div class="topper-year">UPSC CSE 2022</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Rohit Gupta</div><div class="topper-rank">AIR 56 · IRS</div><div class="topper-year">UPSC CSE 2022</div></div>
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Sneha Verma</div><div class="topper-rank">AIR 19 · IFS</div><div class="topper-year">UPSC CSE 2022</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Karan Singh</div><div class="topper-rank">AIR 41 · IAS</div><div class="topper-year">UPSC CSE 2021</div></div>
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Divya Nair</div><div class="topper-rank">AIR 28 · IPS</div><div class="topper-year">UPSC CSE 2021</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Aditya Joshi</div><div class="topper-rank">AIR 5 · IAS</div><div class="topper-year">UPSC CSE 2021</div></div>
+      <!-- Duplicate for seamless loop -->
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Priya Sharma</div><div class="topper-rank">AIR 12 · IAS</div><div class="topper-year">UPSC CSE 2023</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Arjun Mehta</div><div class="topper-rank">AIR 34 · IPS</div><div class="topper-year">UPSC CSE 2023</div></div>
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Ananya Rao</div><div class="topper-rank">AIR 7 · IAS</div><div class="topper-year">UPSC CSE 2022</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Rohit Gupta</div><div class="topper-rank">AIR 56 · IRS</div><div class="topper-year">UPSC CSE 2022</div></div>
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Sneha Verma</div><div class="topper-rank">AIR 19 · IFS</div><div class="topper-year">UPSC CSE 2022</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Karan Singh</div><div class="topper-rank">AIR 41 · IAS</div><div class="topper-year">UPSC CSE 2021</div></div>
+      <div class="topper-card"><div class="topper-avatar">👩‍💼</div><div class="topper-name">Divya Nair</div><div class="topper-rank">AIR 28 · IPS</div><div class="topper-year">UPSC CSE 2021</div></div>
+      <div class="topper-card"><div class="topper-avatar">👨‍💼</div><div class="topper-name">Aditya Joshi</div><div class="topper-rank">AIR 5 · IAS</div><div class="topper-year">UPSC CSE 2021</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY US ─────────────────────────────────────────────── -->
+<section id="why" aria-labelledby="why-title">
+  <div class="container">
+    <div class="why-grid">
+      <div>
+        <div class="tag reveal">Why Ravindra IAS</div>
+        <h2 class="section-title reveal reveal-delay-1" id="why-title" style="margin-bottom:2rem;margin-top:1rem;">What Sets Us<br>Apart from the Rest</h2>
+        <div class="why-features">
+          <div class="why-feature reveal">
+            <div class="why-feature-icon">🧭</div>
+            <div class="why-feature-content">
+              <h3>Structured Mentorship</h3>
+              <p>Every student is assigned a dedicated mentor who tracks their progress, addresses weaknesses, and guides strategy throughout the preparation journey.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal reveal-delay-1">
+            <div class="why-feature-icon">🔬</div>
+            <div class="why-feature-content">
+              <h3>Research-Backed Curriculum</h3>
+              <p>Our syllabus is continuously updated based on UPSC trends, topper feedback, and examiner insights — keeping you ahead of the exam curve.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal reveal-delay-2">
+            <div class="why-feature-icon">📈</div>
+            <div class="why-feature-content">
+              <h3>Data-Driven Evaluation</h3>
+              <p>Detailed analytics after every test — percentile ranks, weak-area mapping, and comparative performance data to guide focused revision.</p>
+            </div>
+          </div>
+          <div class="why-feature reveal reveal-delay-3">
+            <div class="why-feature-icon">🤝</div>
+            <div class="why-feature-content">
+              <h3>Alumni Network Access</h3>
+              <p>Connect with our community of serving IAS, IPS, and IFS officers for real-world insights and interview guidance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual reveal">
+        <div class="why-card-stack">
+          <div class="why-main-card">
+            <div class="why-card-stat">
+              <div class="why-card-stat-num">2,400+</div>
+              <div class="why-card-stat-label">Successful Selections</div>
+            </div>
+            <div class="why-card-items">
+              <div class="why-card-item">IAS, IPS, IFS & Allied Services</div>
+              <div class="why-card-item">Multiple AIR Top-10 ranks</div>
+              <div class="why-card-item">State PCS selections included</div>
+              <div class="why-card-item">Consistent results since 2006</div>
+            </div>
+          </div>
+          <div class="why-float-card">
+            <span class="float-icon">⭐</span>
+            <div><div class="float-val">4.9/5</div><div class="float-text">Student Rating</div></div>
+          </div>
+          <div class="why-float-card">
+            <span class="float-icon">🏅</span>
+            <div><div class="float-val">AIR 5</div><div class="float-text">Best Rank 2021</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ───────────────────────────────────────────────── -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-left">
+        <div class="tag reveal">FAQ</div>
+        <h2 class="section-title reveal reveal-delay-1" id="faq-title">Common Questions,<br>Clear Answers</h2>
+        <p class="section-sub reveal reveal-delay-2">Everything you need to know before beginning your UPSC journey with us.</p>
+        <div class="faq-contact-prompt reveal reveal-delay-3">
+          <p>Have a question that's not covered here? Our counsellors are available to guide you through your enrolment decision.</p>
+          <a href="tel:+911234567890" class="btn-primary" style="font-size:0.68rem;">📞 Speak to a Counsellor</a>
+        </div>
+      </div>
+      <div class="faq-list" role="list">
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span>When should I start my UPSC preparation?</span>
+            <div class="faq-chevron" aria-hidden="true">▾</div>
+          </div>
+          <div class="faq-a">Ideally, start at least 12-18 months before your first Prelims attempt. However, a focused 9-month crash preparation with our Intensive Prelims program has also helped students clear the exam. The right time is now — consistent preparation always pays.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span>Do you offer online classes for students outside Delhi?</span>
+            <div class="faq-chevron" aria-hidden="true">▾</div>
+          </div>
+          <div class="faq-a">Yes. Our Live Online Batch provides the same quality of instruction as our classroom program with HD live streaming, recorded lectures for revision, online test platform access, and doubt-clearing sessions — fully accessible from any location in India.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span>What optional subjects are available?</span>
+            <div class="faq-chevron" aria-hidden="true">▾</div>
+          </div>
+          <div class="faq-a">We currently offer dedicated optional subject programs in Political Science & IR (PSIR), Sociology, History, Geography, and Public Administration. Each optional is taught by a specialist faculty member with a track record of producing toppers in that subject.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span>Is there a trial class or free demo available?</span>
+            <div class="faq-chevron" aria-hidden="true">▾</div>
+          </div>
+          <div class="faq-a">Yes, we offer a free one-week trial for our online batch and free demo classes at our centre every Saturday. You can also access our free daily current affairs, weekly MCQ quiz, and sample study material without any registration.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span>What is the fee structure and are EMIs available?</span>
+            <div class="faq-chevron" aria-hidden="true">▾</div>
+          </div>
+          <div class="faq-a">Fee varies by program — our GS Foundation starts at ₹85,000 and online batches at ₹45,000. We offer 0% interest EMI options and merit-based fee waivers for economically weaker sections. Contact our counselling team for a personalised fee plan.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" role="button" tabindex="0" aria-expanded="false">
+            <span>How is copy evaluation handled for Mains?</span>
+            <div class="faq-chevron" aria-hidden="true">▾</div>
+          </div>
+          <div class="faq-a">Each Mains answer copy is reviewed by two evaluators — one subject specialist and one retired UPSC board member. You receive a scored evaluation with marginal comments, model answers, and a one-on-one session with your mentor within 7 working days.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ENROLL ─────────────────────────────────────────────── -->
+<section id="enroll" aria-labelledby="enroll-title">
+  <div class="enroll-bg" aria-hidden="true"></div>
+  <div class="enroll-grid-lines" aria-hidden="true"></div>
+  <div class="container">
+    <div class="enroll-content">
+      <div class="enroll-left">
+        <div class="tag reveal" style="border-color:rgba(184,145,42,0.4);background:rgba(184,145,42,0.08);">Enrolment Open</div>
+        <h2 class="section-title reveal reveal-delay-1" id="enroll-title">Take the First Step<br>Towards Your Dream</h2>
+        <p class="section-sub reveal reveal-delay-2">Fill in the form to register your interest and our counselling team will reach out within 24 hours with a personalised guidance call.</p>
+        <div class="enroll-checks reveal reveal-delay-3">
+          <div class="enroll-check"><div class="check-icon">✓</div><span>Free counselling session included</span></div>
+          <div class="enroll-check"><div class="check-icon">✓</div><span>Access to free demo resources on registration</span></div>
+          <div class="enroll-check"><div class="check-icon">✓</div><span>Flexible batch timings available</span></div>
+          <div class="enroll-check"><div class="check-icon">✓</div><span>EMI & scholarship options</span></div>
+        </div>
+      </div>
+      <div class="enroll-form-card reveal reveal-delay-1">
+        <div class="form-title">Register Your Interest</div>
+        <div class="form-sub">Our counsellors will contact you within 24 hours.</div>
+        <form onsubmit="handleSubmit(event)" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Arjun" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Sharma" required />
+            </div>
+          </div>
+          <div class="form-group full">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="arjun@example.com" required />
+          </div>
+          <div class="form-group full">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+91 98765 43210" required />
+          </div>
+          <div class="form-group full">
+            <label for="course">Course of Interest</label>
+            <select id="course" name="course" required>
+              <option value="" disabled selected>Select a program</option>
+              <option>GS Foundation (Classroom)</option>
+              <option>Mains Excellence</option>
+              <option>Prelims Intensive</option>
+              <option>Live Online Batch</option>
+              <option>Personality Test Prep</option>
+              <option>Optional Subject</option>
+            </select>
+          </div>
+          <button type="submit" class="form-submit">Submit Application →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ─── FOOTER ─────────────────────────────────────────────── -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-main" style="font-family:'Cinzel',serif;letter-spacing:0.04em;">Ravindra IAS</div>
+        <div class="logo-sub" style="font-family:'DM Sans',sans-serif;font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-top:0.3rem;">Civil Services Excellence</div>
+        <p>Empowering India's future leaders through structured preparation and mentorship since 2006.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <ul>
+          <li><a href="#courses">GS Foundation</a></li>
+          <li><a href="#courses">Mains Excellence</a></li>
+          <li><a href="#courses">Prelims Intensive</a></li>
+          <li><a href="#courses">Interview Prep</a></li>
+          <li><a href="#courses">Online Batch</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#resources">Current Affairs</a></li>
+          <li><a href="#resources">Test Series</a></li>
+          <li><a href="#resources">Study Notes</a></li>
+          <li><a href="#resources">Video Lectures</a></li>
+          <li><a href="#resources">PYQ Analysis</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+911234567890">+91 12345 67890</a></li>
+          <li><a href="mailto:admissions@ravindraias.com">admissions@ravindraias.com</a></li>
+          <li><a href="#">Old Rajinder Nagar, Delhi</a></li>
+          <li><a href="#">Mon–Sat, 9AM–7PM</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Ravindra IAS. All rights reserved. Designed with ♥ for India's aspirants.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+        <a href="#" class="social-link" aria-label="Telegram">✈</a>
+        <a href="#" class="social-link" aria-label="Instagram">◈</a>
+        <a href="#" class="social-link" aria-label="Twitter">✗</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<!-- ─── SCRIPTS ────────────────────────────────────────────── -->
+<script>
+  // ─── Navbar scroll ─────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  const scrollTop = document.getElementById('scrollTop');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    navbar.classList.toggle('scrolled', y > 60);
+    scrollTop.classList.toggle('visible', y > 400);
+  });
+  scrollTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ─── Hamburger ─────────────────────────────────────────
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = hamburger.classList.toggle('open');
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  function closeMobile() {
+    hamburger.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', false);
+  }
+
+  // ─── Reveal on scroll ──────────────────────────────────
+  const reveals = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => revealObserver.observe(el));
+
+  // ─── Counter animation ─────────────────────────────────
+  function animateCounters() {
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = +el.dataset.count;
+      const suffix = el.dataset.suffix || '';
+      const plus = el.dataset.count > 10 ? '+' : '';
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current).toLocaleString('en-IN') + suffix;
+        if (current >= target) {
+          el.textContent = target.toLocaleString('en-IN') + suffix + (target >= 100 ? '+' : '');
+          clearInterval(timer);
+        }
+      }, 16);
+    });
+  }
+  const heroObserver = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) { animateCounters(); heroObserver.disconnect(); }
+  }, { threshold: 0.3 });
+  const heroEl = document.getElementById('hero');
+  if (heroEl) heroObserver.observe(heroEl);
+
+  // ─── FAQ accordion ─────────────────────────────────────
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => { i.classList.remove('open'); i.querySelector('.faq-q').setAttribute('aria-expanded', 'false'); });
+      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+    });
+    btn.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); } });
+  });
+
+  // ─── Form submit ───────────────────────────────────────
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = '✓ Application Submitted!';
+    btn.style.background = '#27ae60';
+    btn.style.color = '#fff';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Submit Application →';
+      btn.style.background = '';
+      btn.style.color = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3500);
+  }
+</script>
+</body>
+</html>
